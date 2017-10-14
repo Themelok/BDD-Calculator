@@ -82,24 +82,18 @@ def step_impl(context):
 
 @when('we divide first numbers by the second')
 def step_impl(context):
-    # import pdb; pdb.set_trace()
     context.calc = context.open_proc()
     msg = '{}/{}'.format(context.first_int, context.second_int)
     context.out, context.err = context.calc.communicate(msg.encode('utf-8'))
     context.draft = str(round(context.first_int/context.second_int,1))
     context.out = context.handle_response(context.out)
-    a=1+1
-    b=1+1
 
 @when('we divide first numbers by zero')
 def step_impl(context):
-    # import pdb; pdb.set_trace()
     context.calc = context.open_proc()
     msg = '{}/{}'.format(context.first_int, context.second_int)
     context.out, context.err = context.calc.communicate(msg.encode('utf-8'))
     context.err = context.handle_response(context.err)
-    a=1+1
-    b=1+1
 
 @then('the result should be equal to quotient')
 def ster_impl(context):
