@@ -12,6 +12,9 @@ def before_all(context):
         resp = x.decode('utf-8').replace('>','').strip()
         if chr(8722) in resp: 
             resp = resp.replace(chr(8722),chr(45))
+        if ',' in resp:
+            resp = resp.replace(',','.')
+            resp = str(round(float(resp),1))
         return resp
 
     context.open_proc = open_proc
